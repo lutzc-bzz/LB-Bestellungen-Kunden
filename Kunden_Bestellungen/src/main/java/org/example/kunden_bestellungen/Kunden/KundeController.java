@@ -1,5 +1,6 @@
 package org.example.kunden_bestellungen.Kunden;
 
+import org.example.kunden_bestellungen.Bestellungen.Bestellung;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,6 +35,11 @@ public class KundeController {
     @PostMapping
     public Kunde createKunde(@RequestBody Kunde kunde) {
         return kundeService.saveKunde(kunde);
+    }
+
+    @PutMapping("/{id}")
+    public Kunde updateBestellung(@RequestBody Long id, Kunde kunde) {
+        return kundeService.updateKunde(id, kunde);
     }
 
     @DeleteMapping("/{id}")

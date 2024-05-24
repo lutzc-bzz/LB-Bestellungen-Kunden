@@ -36,9 +36,9 @@ public class BestellungController {
         return bestellungService.saveBestellung(bestellung);
     }
 
-    @PutMapping
-    public Bestellung updateBestellung(@RequestBody Bestellung bestellung) {
-        return bestellungService.updateBestellung(bestellung);
+    @PutMapping("/{id}")
+    public Bestellung updateBestellung(@RequestBody Long id, Bestellung bestellung) {
+        return bestellungService.updateBestellung(id, bestellung);
     }
 
     @DeleteMapping("/{id}")

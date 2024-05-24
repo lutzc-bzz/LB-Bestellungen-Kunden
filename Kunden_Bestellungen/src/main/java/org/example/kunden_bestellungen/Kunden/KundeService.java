@@ -1,5 +1,6 @@
 package org.example.kunden_bestellungen.Kunden;
 
+import org.example.kunden_bestellungen.Bestellungen.Bestellung;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,21 @@ public class KundeService {
 
     public long countKunden() {
         return kundeRepository.count();
+    }
+
+    public Kunde updateKunde(Long id, Kunde kunde) {
+        if (kundeRepository.existsById(id)) {
+            Kunde existingKunde = kundeRepository.findById(id).orElse(null);
+            if (existingKunde != null) {
+                existingKunde.setAdresse(kunde.getAdresse());
+                existingKunde.setVorname(kunde.getVorname());
+                existingKunde.setName(kunde.getName());
+                existingKunde.setPlz(kunde.getPlz());
+
+                return kundeRepository.save(existingKunde);
+            }
+        }
+        return null;
     }
 
     public Kunde saveKunde(Kunde kunde) {

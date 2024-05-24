@@ -38,21 +38,20 @@ public class BestellungService {
     }
 
     //UPDATE
-    public Bestellung updateBestellung(Bestellung bestellung) {
-        if (existsById(bestellung.getId())) {
-            Bestellung newBestellung = findBestellungById(bestellung.getId());
-            newBestellung.setBestelldatum(bestellung.getBestelldatum());
-            newBestellung.setMenge(bestellung.getMenge());
-            newBestellung.setPreis(bestellung.getPreis());
-            newBestellung.setProdukt(bestellung.getProdukt());
-            newBestellung.setKunde(bestellung.getKunde());
+    public Bestellung updateBestellung(Long id, Bestellung bestellung) {
+        if (bestellungRepository.existsById(id)) {
+            Bestellung existingBestellung = bestellungRepository.findById(id).orElse(null);
+            if (existingBestellung != null) {
+                existingBestellung.setBestelldatum(bestellung.getBestelldatum());
+                existingBestellung.setMenge(bestellung.getMenge());
+                existingBestellung.setPreis(bestellung.getPreis());
+                existingBestellung.setProdukt(bestellung.getProdukt());
+                existingBestellung.setKunde(bestellung.getKunde());
 
-            return newBestellung;
-        } else {
-            return null;
+                return bestellungRepository.save(existingBestellung);
+            }
         }
-
-
+        return null;
     }
 
     //DELETE
