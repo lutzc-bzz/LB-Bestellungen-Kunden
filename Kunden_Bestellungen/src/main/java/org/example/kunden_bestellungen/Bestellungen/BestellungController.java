@@ -37,7 +37,7 @@ public class BestellungController {
     }
 
     @PutMapping("/{id}")
-    public Bestellung updateBestellung(@RequestBody Long id, Bestellung bestellung) {
+    public Bestellung updateBestellung(@PathVariable Long id, @RequestBody Bestellung bestellung) {
         return bestellungService.updateBestellung(id, bestellung);
     }
 
