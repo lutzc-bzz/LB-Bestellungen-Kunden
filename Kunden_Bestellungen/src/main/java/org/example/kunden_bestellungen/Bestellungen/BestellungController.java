@@ -36,6 +36,11 @@ public class BestellungController {
         return bestellungService.saveBestellung(bestellung);
     }
 
+    @PutMapping
+    public Bestellung updateBestellung(@RequestBody Bestellung bestellung) {
+        return bestellungService.updateBestellung(bestellung);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteBestellungById(@PathVariable Long id) {
         bestellungService.deleteBestellungById(id);
