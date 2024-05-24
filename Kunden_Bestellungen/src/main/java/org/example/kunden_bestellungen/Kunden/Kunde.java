@@ -1,6 +1,7 @@
 package org.example.kunden_bestellungen.Kunden;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.example.kunden_bestellungen.Bestellungen.Bestellung;
 
 import java.util.Set;
@@ -11,6 +12,7 @@ public class Kunde {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String name;
     private String vorname;
     private String adresse;

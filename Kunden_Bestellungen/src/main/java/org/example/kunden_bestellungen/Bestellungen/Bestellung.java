@@ -1,6 +1,7 @@
 package org.example.kunden_bestellungen.Bestellungen;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import org.example.kunden_bestellungen.Kunden.Kunde;
 import java.time.LocalDateTime;
 
@@ -9,7 +10,11 @@ public class Bestellung {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotEmpty
     private String produkt;
+
+    @NotEmpty
     private int menge;
     private double preis;
     private LocalDateTime bestelldatum;
